@@ -9,16 +9,18 @@ class Client(tk.Tk):
         tk.Tk.__init__(self, parent)
         self.parent = parent
         self.winfo_toplevel().title("iCollab")
-        self.geometry("1280x900")
+        self.geometry("1280x1920")
 
         self.sidebar()
+        self.photo()
 
+    def photo(self):
         self.imgPath = ("./images/img.jpg")
         self.img_arr = numpy.asarray(PIL.Image.open(self.imgPath))
         self.img = Image.fromarray(self.img_arr, 'RGB')
         self.background_image = ImageTk.PhotoImage(self.img)
-        self.background = tk.Label(self, image=self.background_image).grid(
-            row=20, column=1, sticky="nesw")
+        self.background = tk.Label(
+            self, image=self.background_image).grid(row=0, column=0)
 
     def sidebar(self):
         # Brightness
@@ -26,7 +28,7 @@ class Client(tk.Tk):
             self, text="Brightness").grid(row=1, sticky="nesw")
 
         self.brightness = tk.Scale(
-            self, from_=0, to=100, orient=tk.HORIZONTAL, command=self.changeBrightness)
+            self, from_=0, to=200, orient=tk.HORIZONTAL, command=self.changeBrightness)
         self.brightness.set(100)
         self.brightness.grid(row=2, column=0, sticky="nesw")
 
@@ -90,8 +92,8 @@ class Client(tk.Tk):
         self.img_arr = numpy.asarray(contrast)
         self.img = Image.fromarray(self.img_arr, 'RGB')
         self.background_image = ImageTk.PhotoImage(self.img)
-        self.background = tk.Label(self, image=self.background_image).grid(
-            row=20, column=1, sticky="E")
+        self.background = tk.Label(
+            self, image=self.background_image).grid(row=0, column=0)
 
     def changeBrightness(self, val):
         i = Image.open(self.imgPath)
@@ -99,8 +101,8 @@ class Client(tk.Tk):
         self.img_arr = numpy.asarray(brightness)
         self.img = Image.fromarray(self.img_arr, 'RGB')
         self.background_image = ImageTk.PhotoImage(self.img)
-        self.background = tk.Label(self, image=self.background_image).grid(
-            row=20, column=1, sticky="E")
+        self.background = tk.Label(
+            self, image=self.background_image).grid(row=0, column=0)
 
     def changeSaturation(self, val):
         i = Image.open(self.imgPath)
@@ -108,8 +110,8 @@ class Client(tk.Tk):
         self.img_arr = numpy.asarray(saturation)
         self.img = Image.fromarray(self.img_arr, 'RGB')
         self.background_image = ImageTk.PhotoImage(self.img)
-        self.background = tk.Label(self, image=self.background_image).grid(
-            row=20, column=1, sticky="E")
+        self.background = tk.Label(
+            self, image=self.background_image).grid(row=0, column=0)
 
     def changeSharpness(self, val):
         i = Image.open(self.imgPath)
@@ -117,8 +119,8 @@ class Client(tk.Tk):
         self.img_arr = numpy.asarray(sharpness)
         self.img = Image.fromarray(self.img_arr, 'RGB')
         self.background_image = ImageTk.PhotoImage(self.img)
-        self.background = tk.Label(self, image=self.background_image).grid(
-            row=20, column=1, sticky="E")
+        self.background = tk.Label(
+            self, image=self.background_image).grid(row=0, column=0)
 
 
 if __name__ == "__main__":
